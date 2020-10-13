@@ -11,7 +11,7 @@ router.post('/register', (req, res) => {
   user.password = hash;
   Users.add(user)
   .then((saved) => {
-    res.status(201).json(saved)
+    res.status(201).json({message: "Success with the creation!", saved})
   })
   .catch((error) => {
     res.status(500).json(error);
@@ -27,7 +27,8 @@ router.post('/login', (req, res) => {
     if (user && bcrypt.compareSync(password, user.password)) {
       const token = generateToken(user); // get a token
       res.status(200).json({
-         message: `Welcome ${user.username}`, 
+         message: `Welcome ${user.username}, to our backend API`,
+         password: password, 
          token, // send the token
         })
     } else {
