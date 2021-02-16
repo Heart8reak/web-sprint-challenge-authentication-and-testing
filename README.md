@@ -26,11 +26,21 @@ Be prepared to demonstrate your understanding of this week's concepts by answeri
 
 1. Differences between using _sessions_ or _JSON Web Tokens_ for authentication.
 
+* JSON web tokens have cryptographic signatures, and that's not the case with session cookies. 
+* JSON web tokens are stateless becuase claims are stored client-side, rathe than in teh server's memory.
+* Authentication can occur locally, instead of per reuest, where requests have to go through the server's database. This means that a user can be authenticated multiple times without to communicate with the site or app's database, and without using up a lot of its resources in the process.
+* Session cookies only work across a single  domain, or on its subdomains. If they try to go to a third party, browsers tend to disable them. This is particularly an issue if you want your website to have a secure connection with an API that uses a different domain. With JSON web tokens, you can authenticate a user across multiple locations inclduing multiple domains, mobile devices, and API's to name a few, they are stored locally in teh request header.
+
+
+
 2. What does `bcrypt` do to help us store passwords in a secure manner.
+* Bcrypt is an adaptive has function based on the Blowfish symmetric block cipher cryptographic algorithm. It uses a key factor which adjusts the cost of hashing, which is probably Bcrypt's most notable feature. The ability to increase the cost of hashing in the future as computers become more powerful is what really sets Bcrypt apart from other functions. 
 
 3. How are unit tests different from integration and end-to-end testing.
+* Unlike end-to-end that rely on external components, unit tests are not flaky. If I can build aproject on my machine, I should be able to run its unit tests. In contrast, end-to-end tests would fail if some external component, like a database  or a messaging queue, is not not availabel or cannot be reached. And they can take a very long time ro run. 
 
 4. How _Test Driven Development_ changes the way we write applications and tests.
+* Test Driven Development makes the code simplier and clear. It allows the developer to maintain less documentation. 
 
 You are expected to be able to answer questions in these areas. Your responses contribute to your Sprint Challenge grade.
 
@@ -38,12 +48,12 @@ You are expected to be able to answer questions in these areas. Your responses c
 
 ### Task 1: Project Set Up
 
-- [ ] Create a forked copy of this project
-- [ ] Add your team lead as collaborator on Github
-- [ ] Clone your OWN version of the repository (Not Lambda's by mistake!)
-- [ ] Create a new branch: git checkout -b `<firstName-lastName>`.
-- [ ] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
-- [ ] Push commits: git push origin `<firstName-lastName>`
+- [x] Create a forked copy of this project
+- [x] Add your team lead as collaborator on Github
+- [x] Clone your OWN version of the repository (Not Lambda's by mistake!)
+- [x] Create a new branch: git checkout -b `<firstName-lastName>`.
+- [x] Implement the project on your newly created `<firstName-lastName>` branch, committing changes regularly
+- [x] Push commits: git push origin `<firstName-lastName>`
 
 ### Task 2: Project Requirements
 
